@@ -1,25 +1,18 @@
-# Given an array of integers, nums, and an interger, target, 
-# return indices of the two numbers such that they add up to 
-# target.
-
-# You may assume that each input would have exactly one solution
-# and you may not use the same element twice.
-
-# You can return the answer in any order.
-
-# Brainstorm:
-# Double loop for brute force
-
-from typing import List
-
-# O(n^2)
-class Solution: 
-  def twoSum(self, nums: List[int], target: int) -> List[int]:
-    for i in nums:
-      for j in nums:
-        if i + j == target:
-          return [i, j]
-
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # 2, 7, 11, 15, target = 9
+        
+        
+        results = {}
+        for i in range(len(nums)):
+            num = nums[i]
+            key = target - num
+            if key in results:
+                return [results[key], i]
+            results[num] = i
+        
+        
+            
 # Tests
 ans = Solution()
 print(ans.twoSum([2, 7, 11, 15], 9)) # expected: [0, 1]
